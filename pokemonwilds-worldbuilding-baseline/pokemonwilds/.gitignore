@@ -1,0 +1,18 @@
+# Engine/build outputs
+[Bb]uild/
+[Bb]uilds/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+UserSettings/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets and local settings
+.env
+*.local.json

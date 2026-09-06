@@ -1,0 +1,11 @@
+{
+  "title": "포켓몬스터 와일즈",
+  "codename": "pokemonwilds",
+  "setting": "판도르 지방",
+  "repository": "https://github.com/kevinyu1212/pokemonwilds",
+  "recommendedWindowsPath": "C:\\Users\\유2023610042\\Desktop\\pokemonwilds",
+  "language": "ko-KR",
+  "status": "worldbuilding-baseline",
+  "coreTheme": "진정한 유대는 통제가 아니며 공존은 차이를 지우지 않는다",
+  "generations": "1-9"
+}
