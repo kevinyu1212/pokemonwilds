@@ -6,10 +6,12 @@ var font: Font
 @onready var player: CharacterBody2D = $Player
 @onready var dialogue_box: PanelContainer = $DialogueBox
 @onready var rival: Area2D = $Rival
+@onready var battle: Control = $Battle
 
 func _ready() -> void:
     font = ThemeDB.fallback_font
     dialogue_box.show_message("아르카디아 시티에 도착했다. 연구소로 가서 박사 에리안을 만나자.")
+    battle.battle_finished.connect(_on_battle_finished)
     queue_redraw()
 
 func _process(_delta: float) -> void:
@@ -26,13 +28,21 @@ func _process(_delta: float) -> void:
 
 func _interact() -> void:
     if player.global_position.distance_to(rival.global_position) < 90:
-        dialogue_box.show_message("라이벌: 강해지는 것이 포켓몬을 위한 가장 확실한 방법이야. 먼저 앞서가겠어!")
+        dialogue_box.hide_message()
+        battle.start_battle(selected_starter if selected_starter != "" else "파트너 포켓몬")
         return
     if player.global_position.x > 435 and player.global_position.x < 717 and player.global_position.y < 285:
         phase = "starter"
         dialogue_box.show_message("박사 에리안: 황금 심장 파편이 네게 반응하고 있어. 1/2/3으로 파트너를 선택하렴.")
         return
     dialogue_box.show_message("아르카디아 시티의 에너지 간판이 깜빡인다. 어딘가에서 낮은 공명음이 들려온다.")
+
+func _on_battle_finished(result: String) -> void:
+    if result == "win":
+        dialogue_box.show_message("라이벌: 이번에는 네가 이겼네... 하지만 다음에는 달라질 거야!")
+    else:
+        dialogue_box.show_message("라이벌: 괜찮아. 다시 도전하면 돼!")
+    phase = "city"
 
 func _choose_starter(starter: String) -> void:
     selected_starter = starter
