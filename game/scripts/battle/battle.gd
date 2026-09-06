@@ -47,7 +47,7 @@ func _on_move_pressed(move_index: int) -> void:
         message = "지금은 포켓몬을 교체할 수 없다!"
         queue_redraw()
         return
-    var damage := [8, 9, 10][move_index]
+    var damage: int = [8, 9, 10][move_index]
     rival_hp = max(0, rival_hp - damage)
     if rival_hp <= 0:
         message = "효과가 굉장했다! 라이벌의 포켓몬이 쓰러졌다!"
@@ -60,7 +60,7 @@ func _on_move_pressed(move_index: int) -> void:
     message = "%s 사용! 라이벌의 포켓몬에게 %d의 데미지!" % [moves[move_index], damage]
     queue_redraw()
     await get_tree().create_timer(0.7).timeout
-    var enemy_damage := 5
+    var enemy_damage: int = 5
     player_hp = max(0, player_hp - enemy_damage)
     if player_hp <= 0:
         message = "파트너 포켓몬이 쓰러졌다..."
