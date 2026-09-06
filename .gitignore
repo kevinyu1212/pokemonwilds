@@ -16,3 +16,8 @@ Thumbs.db
 # Secrets and local settings
 .env
 *.local.json
+
+# Godot generated files
+.godot/
+*.uid
+
