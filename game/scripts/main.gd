@@ -31,9 +31,14 @@ func _interact() -> void:
         dialogue_box.hide_message()
         battle.start_battle(selected_starter if selected_starter != "" else "파트너 포켓몬")
         return
-    if player.global_position.x > 435 and player.global_position.x < 717 and player.global_position.y < 285:
-        phase = "starter"
-        dialogue_box.show_message("박사 에리안: 황금 심장 파편이 네게 반응하고 있어. 1/2/3으로 파트너를 선택하렴.")
+    if player.global_position.x > 435 and player.global_position.x < 717 and player.global_position.y < 315:
+        get_tree().change_scene_to_file("res://scenes/interiors/LabInterior.tscn")
+        return
+    if player.global_position.x > 85 and player.global_position.x < 280 and player.global_position.y > 420:
+        get_tree().change_scene_to_file("res://scenes/interiors/CenterInterior.tscn")
+        return
+    if player.global_position.x > 865 and player.global_position.x < 1065 and player.global_position.y > 420:
+        get_tree().change_scene_to_file("res://scenes/interiors/ShopInterior.tscn")
         return
     dialogue_box.show_message("아르카디아 시티의 에너지 간판이 깜빡인다. 어딘가에서 낮은 공명음이 들려온다.")
 
